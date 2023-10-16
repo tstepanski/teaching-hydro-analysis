@@ -51,9 +51,15 @@ public sealed class InputOutput : IInputOutput
             case 's':
                 await PrintSitesAsync();
                 return false;
+            default:
+                await PrintBadInput();
+                return false;
         }
+    }
 
-        return false;
+    private Task PrintBadInput()
+    {
+        return WriteLineAsync("Try again or press h/H for help");
     }
 
     private async Task PrintSitesAsync()
